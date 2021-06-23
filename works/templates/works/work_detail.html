@@ -1,7 +1,5 @@
 {% extends "base.html" %}
 
-{% load crispy_forms_tags %}
-
 
 {% block title %}Telecomm Division Manager{% endblock %}
 
@@ -34,52 +32,55 @@
       </div>
     </form>
     {% endcomment %}
+
     {% if user.is_authenticated %}
     <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
       <small class="text text-white">{{ user.rank }} {{ user.first_name }} {{ user.last_name }}</small>
     </div>
 
     <!-- Navbar -->
-    <ul class="navbar-nav ml-auto ml-md-0">
-      <li class="nav-item dropdown no-arrow mx-1">
-        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-bell fa-fw"></i>
-          <span class="badge badge-danger">9+</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown no-arrow mx-1">
-        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-envelope fa-fw"></i>
-          <span class="badge badge-danger">7</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown no-arrow">
-        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user-circle fa-fw"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-          <a class="dropdown-item" href="{% url 'edit' %}">จัดการข้อมูล</a>
-          <a class="dropdown-item" href="#">บันทึกการเข้าสู่ระบบ</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">ออกจากระบบ</a>
-        </div>
-      </li>
-    </ul>
+    
+      <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item dropdown no-arrow mx-1">
+          <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-bell fa-fw"></i>
+            <span class="badge badge-danger">9+</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown no-arrow mx-1">
+          <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-envelope fa-fw"></i>
+            <span class="badge badge-danger">7</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown no-arrow">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user-circle fa-fw"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="{% url 'edit' %}">จัดการข้อมูล</a>
+            <a class="dropdown-item" href="#">บันทึกการเข้าสู่ระบบ</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">ออกจากระบบ</a>
+          </div>
+        </li>
+      </ul>
     {% endif %}
 
   </nav>
+  
 
   <div id="wrapper">
 
@@ -116,14 +117,12 @@
       <li class="nav-item">
         <a class="nav-link" href="#">
           <i class="fas fa-fw fa-chart-area"></i>
-          <span>สรุุปงาน</span>
-        </a>
+          <span>สรุุปงาน</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'employee' %}">
           <i class="fas fa-fw fa-table"></i>
-          <span>รายชื่อกำลังพล</span>
-        </a>
+          <span>รายชื่อกำลังพล</span></a>
       </li>
     </ul>
 
@@ -133,36 +132,35 @@
 
         <!-- Breadcrumbs-->
         {% if user.is_authenticated %}
-          {% if  user.id == news.author.id %}
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                  <a href="{% url 'home' %}">หน้าหลัก</a>
-                </li>
-                <li class="breadcrumb-item">
-                  <a href="{% url 'home' %}">ประชาสัมพันธ์_สั่งการ</a>
-                </li>
-                <li class="breadcrumb-item active">แก้ไขประชาสัมพันธ์/สั่งการ</li>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="{% url 'home' %}">หน้าหลัก</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="{% url 'work' %}">บันทึกการปฏิบัติงาน</a>
+            </li>
+            <li class="breadcrumb-item active">{{ work.name }}</li>
 
-              </ol>
+          </ol>
+        
+          <h1>{{ work.type }}</h1>
+          <small>โดย {{ work.worker.first_name }} {{ work.worker.last_name }} </small>
+          <br/><hr>
+          <h3 class="text text-center">
+            {{ work.name }}
+          </h3>
+          <br/>
+          {{ work.detail|safe }}
 
-              <h1>เพิ่มประชาสัมพันธ์/สั่งการ</h1>
-              <a href="{% url 'home' %}"><span class="btn btn-dark">กลับ</span></a>
 
-              <br/><hr>
-              <div class="form-group">
-                <form method="POST">
-                  {% csrf_token %}
-                  {{ form|crispy }}
+          <br/><br/>
+          <hr>
+          <a href="{% url 'work' %}"><span class="btn btn-dark">กลับ</span></a>   
+          {% if  user.id == work.worker.id %}
 
-                        <br/><br/>
-                  <button class="btn btn-primary">แก้ไข</button>
-                </form>
-              </div>  
-          {% else %}      
-            คุณไม่มีสิทธิ์ในการแก้ไข
-            <br/><hr>
-            <a href="{% url 'home' %}"><span class="btn btn-dark">กลับ</span></a>
-            <br/><br/>
+            <a href="{% url 'work_update' work.pk %}"><span class="btn btn-warning float-right"> แก้ไข </span></a> 
+            <a href="{% url 'work_delete' work.pk %}"><span class="btn btn-danger float-right"> ลบ </span></a>
+
           {% endif %}
         {% else %}
           <div>
@@ -172,23 +170,26 @@
             <a class="btn btn-info" href="{% url 'register' %}">ลงทะเบียน</a>
             <br/>
           </div>
-        {% endif %}        
-          
+        {% endif %}
+
+
+        <br/><br/>          
         <div class="card-footer">
           <span class="small text-muted text-left">ประสานการปฏิบัติ กทข.ศทส.สส. โทร 95525</span>
  
         </div>
+      
 
-    </div>
+      </div>
       <!-- /.container-fluid -->
 
       <!-- Sticky Footer -->
       
 
-  </div>
+    </div>
     <!-- /.content-wrapper -->
 
-</div>
+  </div>
   <!-- /#wrapper -->
 
   <!-- Scroll to Top Button-->

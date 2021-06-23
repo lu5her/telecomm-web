@@ -116,14 +116,12 @@
       <li class="nav-item">
         <a class="nav-link" href="#">
           <i class="fas fa-fw fa-chart-area"></i>
-          <span>สรุุปงาน</span>
-        </a>
+          <span>สรุุปงาน</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'employee' %}">
           <i class="fas fa-fw fa-table"></i>
-          <span>รายชื่อกำลังพล</span>
-        </a>
+          <span>รายชื่อกำลังพล</span></a>
       </li>
     </ul>
 
@@ -133,37 +131,39 @@
 
         <!-- Breadcrumbs-->
         {% if user.is_authenticated %}
-          {% if  user.id == news.author.id %}
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                  <a href="{% url 'home' %}">หน้าหลัก</a>
-                </li>
-                <li class="breadcrumb-item">
-                  <a href="{% url 'home' %}">ประชาสัมพันธ์_สั่งการ</a>
-                </li>
-                <li class="breadcrumb-item active">แก้ไขประชาสัมพันธ์/สั่งการ</li>
+          {% if user.id == news.author.id %}
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="{% url 'home' %}">หน้าหลัก</a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="{% url 'work' %}">บันทึกการปฏิบัติงาน</a>
+              </li>
+              <li class="breadcrumb-item active">ลบบันทึกการปฏิบัติงาน</li>
 
-              </ol>
+            </ol>
 
-              <h1>เพิ่มประชาสัมพันธ์/สั่งการ</h1>
-              <a href="{% url 'home' %}"><span class="btn btn-dark">กลับ</span></a>
+            <h1>ลบ {{ work.name }} </h1>
+            <a href="{% url 'home' %}"><span class="btn btn-dark">กลับ</span></a>
 
-              <br/><hr>
-              <div class="form-group">
-                <form method="POST">
-                  {% csrf_token %}
-                  {{ form|crispy }}
+            <br/><hr>
+            <div class="form-group">
+              <form method="POST">
+                {% csrf_token %}
+                <strong>ต้องการลบ สิ่งนี้!!!!</strong>
+                
 
-                        <br/><br/>
-                  <button class="btn btn-primary">แก้ไข</button>
-                </form>
-              </div>  
-          {% else %}      
-            คุณไม่มีสิทธิ์ในการแก้ไข
+                <br/><br/>
+                <button class="btn btn-primary">ลบ</button>
+              </form>
+            </div>
+          {% else %}
+             คุณไม่มีสิทธิ์ในการลบ
             <br/><hr>
             <a href="{% url 'home' %}"><span class="btn btn-dark">กลับ</span></a>
             <br/><br/>
           {% endif %}
+
         {% else %}
           <div>
             คุณยังไม่ได้เข้าสู่ระบบ
@@ -172,23 +172,23 @@
             <a class="btn btn-info" href="{% url 'register' %}">ลงทะเบียน</a>
             <br/>
           </div>
-        {% endif %}        
+        {% endif %}               
           
         <div class="card-footer">
           <span class="small text-muted text-left">ประสานการปฏิบัติ กทข.ศทส.สส. โทร 95525</span>
  
         </div>
 
-    </div>
+     </div>
       <!-- /.container-fluid -->
 
       <!-- Sticky Footer -->
       
 
-  </div>
+    </div>
     <!-- /.content-wrapper -->
 
-</div>
+  </div>
   <!-- /#wrapper -->
 
   <!-- Scroll to Top Button-->
@@ -215,7 +215,7 @@
     </div>
   </div>
 
-
+>
 
 </body>
 {% endblock %}

@@ -36,7 +36,7 @@
     {% endcomment %}
     {% if user.is_authenticated %}
     <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-      <small class="text text-white">{{ user.first_name }} {{ user.last_name }}</small>
+      <small class="text text-white">{{ user.rank }} {{ user.first_name }} {{ user.last_name }}</small>
     </div>
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto ml-md-0">
@@ -86,7 +86,7 @@
     <ul class="sidebar navbar-nav">
       <li class="nav-item active">
         <a class="nav-link" href="{% url 'home' %}">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-fw fa-home"></i>
           <span>หน้าหลัก</span>
         </a>
       </li>
@@ -97,7 +97,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <h6 class="dropdown-header">การจัดการงาน:</h6>
-          <a class="dropdown-item" href="#">บันทึกการปฏิบัติงาน</a>
+          <a class="dropdown-item" href="{% url 'work' %}">บันทึกการปฏิบัติงาน</a>
           <a class="dropdown-item" href="#">การร้องขอ</a>
           <a class="dropdown-item" href="#">คลัง</a>
           <a class="dropdown-item" href="#">แจ้งซ่อม</a>
