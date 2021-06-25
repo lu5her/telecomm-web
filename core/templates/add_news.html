@@ -149,6 +149,7 @@
             <form method="POST">
               {% csrf_token %}
               
+              {{ form.media }}
               {{ form|crispy }}
 
               <br/><br/>
