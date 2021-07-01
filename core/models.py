@@ -19,6 +19,7 @@ class News(models.Model):
 	detail = models.TextField()
 	#detail = RichTextUploadingField()
 	author = models.ForeignKey(Employee, on_delete=models.CASCADE)
+	file = models.FileField(null=True, blank=True)
 	read = models.ManyToManyField(Employee, related_name='read_newss')
 
 	def __str__(self):
